@@ -118,7 +118,7 @@ class M3U8(object):
 #        print self.baseuri 
         self.playlists = PlaylistList([ Playlist(baseuri=self.baseuri, playlist=playlist, uri=None)
                                         for playlist in self.data.get('playlists', []) ])
-        print self.playlists
+#        print self.playlists
 
     def __unicode__(self):
         return self.dumps()
