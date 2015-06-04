@@ -61,7 +61,12 @@ def getSequence(segment,prefix):
     sep = "\n"
     for line in str(segment).split(sep):
         if line.__contains__("http") or  line.__contains__("https"):
-            line = line[len(prefix):]
+            if line.__contains__(prefix):
+                line = line[len(prefix):]
+            elif line.__contains__("http") and prefix.__contains__("https"):
+                line = line[len(prefix)-1:]
+            elif line.__contains__("https") and prefix.__contains__("http"):
+                line = line[len(prefix)+1:]
             m = re.match(pattern,line)
             if m is not None:
                 return int(m.group(3))
